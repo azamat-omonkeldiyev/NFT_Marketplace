@@ -252,7 +252,7 @@ export class UserService {
         data,
         meta: {
           total,
-          page,
+          page: Number(page),
           lastPage: Math.ceil(total / limit),
         },
       };
