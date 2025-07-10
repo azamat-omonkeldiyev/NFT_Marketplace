@@ -19,6 +19,8 @@ export class CreateAdminrDto {
   @IsNotEmpty()
   email: string;
 
+  image: 'default.png'
+  
   @ApiProperty({
     example: UserRole.ADMIN,
     enum: [UserRole.ADMIN, UserRole.SUPERADMIN],

@@ -343,6 +343,7 @@ export class UserService {
           email: data.email,
           password: hash,
           role: data.role,
+          image: 'default.png'
         },
       })
   
