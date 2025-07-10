@@ -21,9 +21,9 @@ export class CreateAdminrDto {
 
   @ApiProperty({
     example: UserRole.ADMIN,
-    enum: [UserRole.ARTIST, UserRole.SUPERADMIN],
+    enum: [UserRole.ADMIN, UserRole.SUPERADMIN],
   })
-  @IsIn([UserRole.ARTIST, UserRole.SUPERADMIN])
+  @IsIn([UserRole.ADMIN, UserRole.SUPERADMIN])
   role: UserRole;
 
 }

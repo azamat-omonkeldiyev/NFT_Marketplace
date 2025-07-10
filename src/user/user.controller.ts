@@ -11,6 +11,7 @@ import { ApiQuery } from '@nestjs/swagger';
 import { ResetPasswordDto } from './dto/resetPassport.dto';
 import { ResetPasswordEmailDto } from './dto/resetOtpToEmail.dto';
 import { AuthGuard } from 'src/guard/auth.guard';
+import { UserRole } from '@prisma/client';
 
 @Controller('user')
 export class UserController {
@@ -56,6 +57,7 @@ export class UserController {
   @Get()
   @ApiQuery({ name: 'page', required: false, type: Number, example: 1 })
   @ApiQuery({ name: 'limit', required: false, type: Number, example: 10 })
+  @ApiQuery({ name: 'role', required: false, enum: UserRole })
   @ApiQuery({ name: 'username', required: false, type: String})
   @ApiQuery({ name: 'email', required: false, type: String})
   @ApiQuery({ name: 'sortBy', required: false, type: String})
