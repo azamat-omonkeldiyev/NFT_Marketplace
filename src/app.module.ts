@@ -13,6 +13,7 @@ import { CategoryModule } from './category/category.module';
 import { AuctionModule } from './auction/auction.module';
 import { AuctionResultModule } from './auction-result/auction-result.module';
 import { RankingModule } from './ranking/ranking.module';
+import { AdminModule } from './admin/admin.module';
 
 @Module({
   imports: [UserModule, PrismaModule, MailModule, NftModule,
@@ -24,7 +25,8 @@ import { RankingModule } from './ranking/ranking.module';
     CategoryModule,
     AuctionModule,
     AuctionResultModule,
-    RankingModule
+    RankingModule,
+    AdminModule,
   ],
   controllers: [AppController,MulterController],
   providers: [AppService],

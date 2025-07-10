@@ -8,10 +8,8 @@ import { sendOtpEmailDto } from './dto/sendOtpEmail.dto';
 import { verifyOtpDto } from './dto/verify-otp.dto';
 import { Request } from 'express';
 import { ApiQuery } from '@nestjs/swagger';
-import { UserRole } from '@prisma/client';
 import { ResetPasswordDto } from './dto/resetPassport.dto';
 import { ResetPasswordEmailDto } from './dto/resetOtpToEmail.dto';
-import { Roles } from './decorators/role.decorator';
 import { AuthGuard } from 'src/guard/auth.guard';
 
 @Controller('user')
@@ -55,9 +53,6 @@ export class UserController {
   }
 
 
-  @Roles(UserRole.ADMIN,UserRole.SUPERADMIN)
-  // @UseGuards(RoleGuard)
-  // @UseGuards(AuthGuard)
   @Get()
   @ApiQuery({ name: 'page', required: false, type: Number, example: 1 })
   @ApiQuery({ name: 'limit', required: false, type: Number, example: 10 })
@@ -82,13 +77,13 @@ export class UserController {
   }
 
 
-  // @UseGuards(AuthGuard)
+  @UseGuards(AuthGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.userService.update(id, updateUserDto);
   }
 
-  // @UseGuards(AuthGuard)
+  @UseGuards(AuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.userService.remove(id);

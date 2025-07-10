@@ -38,12 +38,18 @@ export class NftController {
     return this.nftService.findOne(id);
   }
 
+  @Roles(UserRole.ARTIST,UserRole.ADMIN, UserRole.SUPERADMIN)
+  @UseGuards(RoleGuard)
+  @UseGuards(AuthGuard)
   @Patch(':id')
   @ApiOperation({ summary: 'Update NFT (PATCH)' })
   update(@Param('id') id: string, @Body() dto: UpdateNftDto) {
     return this.nftService.update(id, dto);
   }
 
+  @Roles(UserRole.ARTIST,UserRole.ADMIN)
+  @UseGuards(RoleGuard)
+  @UseGuards(AuthGuard)
   @Delete(':id')
   @ApiOperation({ summary: 'Delete NFT' })
   remove(@Param('id') id: string) {
