@@ -15,6 +15,7 @@ model User {
   username         String   @unique
   email            String   @unique
   password         String
+  image            String
   role             UserRole @default(ARTIST)
   bio              String?
   globeAccLink     String?

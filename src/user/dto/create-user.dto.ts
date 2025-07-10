@@ -27,6 +27,11 @@ export class CreateUserDto {
   @IsNotEmpty()
   email: string;
 
+  @ApiProperty({ example: 'user-image.svg' })
+  @IsString()
+  @IsNotEmpty()
+  image: string;
+
   @ApiProperty({
     example: UserRole.ARTIST,
     enum: [UserRole.ARTIST],
