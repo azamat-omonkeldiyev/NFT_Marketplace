@@ -204,8 +204,8 @@ export class UserService {
     sortOrder?: 'asc' | 'desc';
   }) {
     const {
-      page,
-      limit,
+      page=1,
+      limit=10,
       username,
       email,
       role,
