@@ -44,7 +44,8 @@ export class RankingService {
             nft: {
               select: {
                 creatorId: true,
-                creator: { select: { username: true } },
+                creator: { select: { username: true, image: true } },
+              
               },
             },
           },
