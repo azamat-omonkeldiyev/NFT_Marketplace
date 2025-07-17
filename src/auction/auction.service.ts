@@ -3,6 +3,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateAuctionDto } from './dto/create-auction.dto';
 import { UpdateAuctionDto } from './dto/update-auction.dto';
 import { QueryAuctionDto } from './dto/auction-query.sto';
+import { userInfo } from 'os';
 
 @Injectable()
 export class AuctionService {
@@ -30,7 +31,9 @@ export class AuctionService {
       skip: (page - 1) * limit,
       take: limit,
       orderBy: { createdAt: 'desc' },
-      include: { nft: true, results: true },
+      include: { nft: {
+        include: { creator: true}
+      }, results: true },
     });
 
     return {
