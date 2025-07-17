@@ -45,7 +45,6 @@ export class RankingService {
               select: {
                 creatorId: true,
                 creator: { select: { username: true, image: true } },
-              
               },
             },
           },
@@ -66,6 +65,7 @@ export class RankingService {
             nft: {
               select: {
                 creatorId: true,
+                creator: { select: { username: true, image: true } },
               },
             },
           },
@@ -73,7 +73,7 @@ export class RankingService {
       },
     });
 
-    const grouped: Record<string, { artistName: string; nftSold: number; totalRevenue: number }> = {};
+    const grouped: Record<string, { artistName: string; image: string, nftSold: number; totalRevenue: number }> = {};
     const prevGrouped: Record<string, number> = {};
 
     for (const result of results) {
@@ -81,6 +81,7 @@ export class RankingService {
       if (!grouped[creatorId]) {
         grouped[creatorId] = {
           artistName: result.auction.nft.creator.username,
+          image: result.auction.nft.creator.image,
           nftSold: 0,
           totalRevenue: 0,
         };
